@@ -23,10 +23,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TableLayout
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.iiordanov.bVNC.App
@@ -36,11 +33,6 @@ import com.undatech.remoteClientUi.R
 private const val RATE_OR_SHARE_FRAGMENT_CONFIG_ELEMENT = "rateOrShareFragment"
 
 class RateOrShareFragment : DialogFragment() {
-    private var layout: TableLayout? = null
-    private var donationButton: Button? = null
-    private var emailButton: Button? = null
-    private var rateButton: Button? = null
-    private var previousVersionsButton: Button? = null
     private var versionAndCode: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,27 +44,14 @@ class RateOrShareFragment : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Log.d(TAG, "onCreateView called")
         setTitle()
         val v = inflater.inflate(R.layout.rateorshare, container, false)
-        layout = v.findViewById<View>(R.id.layout) as TableLayout
-        donationButton = v.findViewById(R.id.buttonDonate)
-        emailButton = v.findViewById(R.id.emailButton)
-        rateButton = v.findViewById(R.id.buttonRateApp)
-        if (!Utils.supportEnabled(context)) {
-            emailButton?.visibility = GONE
-            rateButton?.visibility = GONE
-        }
-        previousVersionsButton = v.findViewById(R.id.buttonPreviousVersions)
-        if (!Utils.isFree(activity)) {
-            donationButton?.visibility = GONE
-        }
-        if (Utils.isOpaque(activity)) {
-            previousVersionsButton?.visibility = GONE
-        }
-        versionAndCode = v.findViewById<View>(R.id.versionAndCode) as TextView
+
+        versionAndCode = v.findViewById(R.id.versionAndCode)
         versionAndCode?.text = Utils.getVersionAndCode(v.context)
+
         setVisibilityOfElements(v)
         return v
     }
@@ -80,20 +59,21 @@ class RateOrShareFragment : DialogFragment() {
     @SuppressLint("DiscouragedApi")
     fun setTitle() {
         var titleString = getString(R.string.action_rate_or_share_app)
-        if (Utils.isCustom(context)){
+        if (Utils.isCustom(context)) {
             try {
                 titleString = getString(
                     requireContext().resources.getIdentifier(
                         Utils.getStringConfigAttribute(
                             App.configFileReader.configData,
                             RATE_OR_SHARE_FRAGMENT_CONFIG_ELEMENT,
-                            "title", "key"),
+                            "title",
+                            "key"
+                        ),
                         "string",
                         Utils.pName(context)
                     )
                 )
-            }
-            catch (e: NullPointerException) {
+            } catch (e: NullPointerException) {
                 isCustomNullPointerException(e)
             }
         }
@@ -101,11 +81,15 @@ class RateOrShareFragment : DialogFragment() {
     }
 
     fun setVisibilityOfElements(v: View) {
-        if (Utils.isCustom(context)){
+        if (Utils.isCustom(context)) {
             try {
-                Utils.setVisibilityForViewElementsViaConfig(context, App.configFileReader.configData, TAG.replaceFirstChar { it.lowercase() }, v)
-            }
-            catch (e: NullPointerException) {
+                Utils.setVisibilityForViewElementsViaConfig(
+                    context,
+                    App.configFileReader.configData,
+                    TAG.replaceFirstChar { it.lowercase() },
+                    v
+                )
+            } catch (e: NullPointerException) {
                 isCustomNullPointerException(e)
             }
         }

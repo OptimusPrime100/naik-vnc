@@ -53,8 +53,6 @@ public class IntroTextDialog extends Dialog {
     static IntroTextDialog dialog = null;
     private final PackageInfo packageInfo;
     private final Database database;
-    private boolean donate = false;
-
     private boolean proFeature = false;
 
     /**
@@ -92,10 +90,6 @@ public class IntroTextDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String pkgName = Utils.pName(this.getContext());
-        if (pkgName.contains("free")) {
-            donate = true;
-        }
 
         setContentView(R.layout.intro_dialog);
         Window window = getWindow();
@@ -116,18 +110,6 @@ public class IntroTextDialog extends Dialog {
         if (proFeature) {
             proFeatureText(sb);
         } else {
-            if (donate) {
-                donationIntroText(pkgName, sb);
-            }
-        }
-        if (donate) {
-            linksToProApps(context, sb);
-            if (!proFeature) {
-                linksToMoreApps(sb);
-            }
-        }
-
-        if (!proFeature) {
             generalIntroText(sb, context);
         }
         sb.append("\n");
@@ -142,60 +124,11 @@ public class IntroTextDialog extends Dialog {
         ((Button) findViewById(R.id.buttonCloseIntro)).setOnClickListener(v -> showAgain(true));
 
         Button buttonCloseIntroDontShow = (Button) findViewById(R.id.buttonCloseIntroDontShow);
-        if (donate) {
-            buttonCloseIntroDontShow.setVisibility(View.GONE);
-        } else {
-            /* (non-Javadoc)
-             * @see android.view.View.OnClickListener#onClick(android.view.View)
-             */
-            buttonCloseIntroDontShow.setOnClickListener(v -> showAgain(false));
-        }
-    }
-
-    private void donationIntroText(String pkgName, StringBuilder sb) {
-        if (pkgName.contains("VNC")) {
-            sb.append(getContext().getResources().getString(R.string.ad_donate_text_vnc));
-            sb.append("<br>");
-            sb.append("<br>");
-        } else if (pkgName.contains("SPICE")) {
-            sb.append(getContext().getResources().getString(R.string.ad_donate_text_spice));
-            sb.append("<br>");
-            sb.append("<br>");
-        } else if (pkgName.contains("RDP")) {
-            sb.append(getContext().getResources().getString(R.string.ad_donate_text_rdp));
-            sb.append("<br>");
-            sb.append("<br>");
-        }
-        sb.append(getContext().getResources().getString(R.string.ad_donate_text0));
-        sb.append("<br>");
-        sb.append("<br>");
+        buttonCloseIntroDontShow.setOnClickListener(v -> showAgain(false));
     }
 
     private void proFeatureText(StringBuilder sb) {
         sb.append(getContext().getResources().getString(R.string.pro_feature_intro));
-        sb.append("<br>");
-        sb.append("<br>");
-    }
-
-    private void linksToProApps(Context context, StringBuilder sb) {
-        if (Utils.isSpice(context)) {
-            sb.append("<a href=\"");
-            sb.append(Utils.getDonationOpaque());
-            sb.append("\">");
-            sb.append(getContext().getResources().getString(R.string.ad_donate_spice_text1a));
-            sb.append("</a>");
-            sb.append("<br>");
-            sb.append("<br>");
-        }
-        sb.append("<a href=\"");
-        sb.append(Utils.getDonationPackageLink(getContext()));
-        sb.append("\">");
-        if (Utils.isSpice(context)) {
-            sb.append(getContext().getResources().getString(R.string.ad_donate_spice_text1b));
-        } else {
-            sb.append(getContext().getResources().getString(R.string.ad_donate_text1));
-        }
-        sb.append("</a>");
         sb.append("<br>");
         sb.append("<br>");
     }
@@ -209,22 +142,6 @@ public class IntroTextDialog extends Dialog {
         } else if (Utils.isSpice(context)) {
             sb.append(getContext().getResources().getString(R.string.spice_intro_text));
         }
-    }
-
-    private void linksToMoreApps(StringBuilder sb) {
-        sb.append(getContext().getResources().getString(R.string.ad_donate_text2));
-        sb.append("<br>");
-        sb.append("<br>");
-        sb.append(getContext().getResources().getString(R.string.ad_donate_text3));
-        sb.append(" <a href=\"market://details?id=com.iiordanov.bVNC\">VNC</a>");
-        sb.append(", ");
-        sb.append("<a href=\"market://details?id=com.iiordanov.aRDP\">RDP</a>");
-        sb.append(", ");
-        sb.append("<a href=\"market://details?id=com.iiordanov.aSPICE\">SPICE</a>");
-        sb.append(", ");
-        sb.append("<a href=\"market://details?id=com.undatech.opaque\">oVirt/RHEV/Proxmox</a>");
-        sb.append("<br>");
-        sb.append("<br>");
     }
 
     /* (non-Javadoc)

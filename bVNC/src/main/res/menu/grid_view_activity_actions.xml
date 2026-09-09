@@ -33,18 +33,10 @@
         app:showAsAction="never"
         tools:ignore="AppCompatResource" />
 
-    <item
-        android:id="@+id/actionMorpheusly"
-        android:icon="@drawable/ic_morpheusly"
-        android:onClick="openMorpheusly"
-        android:showAsAction="always"
-        android:title="@string/action_morpheusly"
-        app:showAsAction="always"
-        tools:ignore="AppCompatResource" />
 
     <item
         android:id="@+id/actionRateOrShare"
-        android:icon="@android:drawable/btn_star_big_on"
+        android:icon="@android:drawable/ic_menu_help"
         android:onClick="rateOrShare"
         android:showAsAction="never"
         android:title="@string/action_rate_or_share_app"

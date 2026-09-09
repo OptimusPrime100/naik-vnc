@@ -20,7 +20,6 @@
 
 package com.undatech.opaque;
 
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.iiordanov.bVNC.Constants.CONNECTION_TO_EDIT_INTENT_KEY;
 import static com.iiordanov.bVNC.Utils.createMainScreenDialog;
 import static com.iiordanov.bVNC.Utils.setClipboard;
@@ -53,7 +52,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -69,7 +67,6 @@ import com.iiordanov.bVNC.dialogs.DiscoveryBottomSheet;
 import com.iiordanov.bVNC.dialogs.GetTextFragment;
 import com.iiordanov.bVNC.dialogs.ImportExportDialog;
 import com.iiordanov.bVNC.dialogs.IntroTextDialog;
-import com.iiordanov.bVNC.dialogs.MorpheuslyBottomSheet;
 import com.iiordanov.bVNC.dialogs.NetworkDiscovery;
 import com.iiordanov.bVNC.dialogs.RateOrShareFragment;
 import com.iiordanov.permissions.BatteryOptimizationDisabler;
@@ -283,8 +280,7 @@ public class ConnectionGridActivity extends AppCompatActivity implements GetText
             startActivityForResult(intent, LAUNCH_CONNECTION_REQUEST_CODE);
         } catch (ActivityNotFoundException e) {
             Log.e(TAG, "Error launching connection: " + e);
-            Snackbar.make(gridView, R.string.no_application_to_handle_vpn, Snackbar.LENGTH_LONG).show();
-            startUriIntent(this, "market://search?q=pub:\"Morpheusly\"");
+            Snackbar.make(gridView, R.string.naik_no_application_to_handle_vpn, Snackbar.LENGTH_LONG).show();
         }
     }
 
@@ -542,14 +538,18 @@ public class ConnectionGridActivity extends AppCompatActivity implements GetText
         }
     }
 
-    public void openMorpheusly(MenuItem menuItem) {
-        MorpheuslyBottomSheet.newInstance().show(getSupportFragmentManager(), "morpheusly");
-    }
 
     /**
      * Opens the Naik VNC Privacy Policy in the user's web browser.
      */
     public void openPrivacyPolicy(MenuItem menuItem) {
+        startUriIntent(this, "https://optimusprime100.github.io/naik-vnc/");
+    }
+
+    /**
+     * Opens the Naik VNC Privacy Policy from a normal View/button.
+     */
+    public void openPrivacyPolicy(View view) {
         startUriIntent(this, "https://optimusprime100.github.io/naik-vnc/");
     }
 
@@ -559,12 +559,6 @@ public class ConnectionGridActivity extends AppCompatActivity implements GetText
         inflater.inflate(R.menu.grid_view_activity_actions, menu);
         MenuItem actionMasterPassword = menu.findItem(R.id.actionMasterPassword);
         actionMasterPassword.setChecked(Utils.querySharedPreferenceBoolean(this, Constants.masterPasswordEnabledTag));
-        // The Morpheusly icon is multicolour; suppress AppCompat's default
-        // textColorPrimary tint so the brand blue/light-blue palette is preserved.
-        MenuItem morpheusly = menu.findItem(R.id.actionMorpheusly);
-        if (morpheusly != null) {
-            MenuItemCompat.setIconTintList(morpheusly, null);
-        }
         CustomClientConfigFileReader configReader = App.getConfigFileReader();
         if (configReader != null) {
             Utils.setMenuItemVisibilityViaConfig(
@@ -737,51 +731,8 @@ public class ConnectionGridActivity extends AppCompatActivity implements GetText
         createMainScreenDialog(this);
     }
 
-    public void showSupportForum(View item) {
-        startUriIntent(this, "https://groups.google.com/forum/#!forum/bvnc-ardp-aspice-opaque-remote-desktop-clients");
-    }
-
-    public void emailUs(View item) {
-        final Intent selectorIntent = new Intent(Intent.ACTION_SENDTO);
-        selectorIntent.setData(Uri.parse("mailto:"));
-        final Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        String packageName = Utils.pName(App.getContext());
-        String versionAndBuild = Utils.getVersionAndCode(App.getContext());
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"support@morpheusly.com"});
-        emailIntent.putExtra(
-                Intent.EXTRA_SUBJECT,
-                String.format("Help with: %s, version: %s", packageName, versionAndBuild)
-        );
-        emailIntent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-        emailIntent.setSelector(selectorIntent);
-        Utils.startActivityIfActivityFound(emailIntent);
-    }
-
     public void reportBug(View item) {
-        startUriIntent(this, "https://github.com/iiordanov/remote-desktop-clients/issues");
+        startUriIntent(this, "https://github.com/OptimusPrime100/naik-vnc/issues");
     }
 
-    public void rateApp(View item) {
-        Log.d(TAG, "rateApp: Showing rate app functionality");
-        Utils.showRateAppDialog(this);
-    }
-
-    public void shareApp(View item) {
-        Log.d(TAG, "shareApp: Copying app link to clipboard");
-        String url = Utils.getDonationPackageUrl(this);
-        setClipboard(this, url);
-        Snackbar.make(gridView, R.string.share_app_toast, Snackbar.LENGTH_LONG).show();
-    }
-
-    public void donateToProject(View item) {
-        startUriIntent(this, Utils.getDonationPackageLink(this));
-    }
-
-    public void moreApps(View item) {
-        startUriIntent(this, "market://search?q=pub:\"Iordan Iordanov (Undatech)\"");
-    }
-
-    public void previousVersions(View item) {
-        startUriIntent(this, "https://github.com/iiordanov/remote-desktop-clients/releases");
-    }
 }

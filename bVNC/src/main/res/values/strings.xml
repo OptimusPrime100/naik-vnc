@@ -33,7 +33,7 @@
     <string name="reset_default_connection_settings_confirm">Reset the default connection settings back to their initial values?</string>
     <string name="action_export_settings">Export Settings</string>
     <string name="action_delete_connection">Delete Connection</string>
-    <string name="action_rate_or_share_app">⭐ Get Help, Rate, Share</string>
+    <string name="action_rate_or_share_app">Help &amp; Support</string>
     <string name="action_morpheusly">Get Morpheusly</string>
     <string name="morpheusly_cta_title">Reach your computers from anywhere</string>
     <string name="morpheusly_cta_body">Secure remote-desktop access over the Internet with zero network configuration. Install the Morpheusly desktop app on every computer you want to reach, sign in, and see which ones are online and connect seamlessly from the Morpheusly mobile app.</string>
@@ -114,7 +114,7 @@
     <string name="error_vm_lookup_failed">Could not find a virtual machine with the name specified assigned to your user. Please erase the VM name specified to see a list of VMs assigned to the user.</string>
     <string name="error_vv_download_timeout">Timeout downloading vv file.</string>
     <string name="message_please_wait">Please wait</string>
-    <string name="message_please_install_bvnc">Please install &lt;a href="market://details?id=com.iiordanov.bVNC">bVNC&lt;/a> from Google Play to connect to the VNC console of this VM.</string>
+    <string name="message_please_install_bvnc">A compatible VNC client is required to connect to this console.</string>
     <string name="ssl_strict">Require common name to match cert (recommended)</string>
     <string name="usb">USB (plug in OTG cable first)</string>
 
@@ -432,7 +432,7 @@ All Input Modes:
     <string name="intro_dont_show">Don\'t show again</string>
     <string name="intro_header" translatable="false" />
     <string name="intro_text">
-Current list of bVNC features:
+Naik VNC features:
 &lt;br&gt;
 - Plain VNC, Secure VNC over SSH, AnonTLS, and VeNCrypt, and UltraVNC Windows Logon with optional Repeater.
 &lt;br&gt;
@@ -479,7 +479,7 @@ Current list of bVNC features:
 &lt;br&gt;
 Known issues:
 &lt;br&gt;</string>
-    <string name="intro_title">bVNC: Intuitive, secure VNC client</string>
+    <string name="intro_title">Naik VNC</string>
     <string name="intro_version_text" translatable="false" />
 
     <string name="keep_password_button">Save password</string>
@@ -585,11 +585,11 @@ If you are looking for a quick performance boost, try setting the Color mode to 
     <string name="remote_clipboard_integration">Enable Remote to Local Clipboard Integration</string>
     <string name="position_toolbar_last_used">Restore Toolbar Position</string>
     <string name="applies_to_new_connections_only">Applies to New Connections Only</string>
-    <string name="pro_feature_mfa">It appears your server has multi-factor authentication enabled. Please support the project by purchasing the Pro version which has support for this feature. A link to the Pro version is available in the start dialog.</string>
-    <string name="pro_feature_intro">It appears you are using a Pro feature. Please support the project by purchasing the Pro version which has support for this feature. Please check the intro dialog for links to the correct app.</string>
-    <string name="pro_feature_generic">It appears you are using a Pro feature. Please support the project by purchasing the Pro version which has support for this feature. A link to the Pro version is available in the start dialog.</string>
-    <string name="pro_feature_rdp">It looks like you tried to open an .rdp file which is a Pro feature. Please support the project by purchasing aRDP Pro, which supports .rdp files. A link to aRDP Pro version is available in the start dialog.</string>
-    <string name="pro_feature_spice">It looks like you tried to open a .vv file. If you would like to save connections to Proxmox or oVirt right inside the app and also want to open .vv files, consider purchasing Opaque. If you only need .vv file support, you can get aSPICE Pro. Find links to both apps in the start dialog.</string>
+    <string name="pro_feature_mfa">Multi-factor authentication is not available in this build.</string>
+    <string name="pro_feature_intro">This feature is not available in this build.</string>
+    <string name="pro_feature_generic">This feature is not available in this build.</string>
+    <string name="pro_feature_rdp">Opening .rdp files is not available in this build.</string>
+    <string name="pro_feature_spice">Opening .vv files is not available in this build.</string>
 
     <string name="rdp_address_caption_hint">RDP Server</string>
     <string name="rdp_adv_console_mode">Console Mode</string>
@@ -997,7 +997,8 @@ Below that is where you configure your connection.
     <string name="pref_keyboard_type_label_TYPE_NULL">Default (TYPE_NULL)</string>
     <string name="pref_keyboard_type_label_VISIBLE_PASSWORD">Text/Numbers No Suggestions (VISIBLE_PASSWORD)</string>
     <string name="pref_keyboard_type_label_TYPE_CLASS_TEXT">Text With Suggestions (TYPE_CLASS_TEXT)</string>
-    <string name="no_application_to_handle_vpn">This connection is set to launch VPN via an external app. You need to install an app like Morpheusly to launch it.</string>
+    <string name="no_application_to_handle_vpn">No compatible application is installed to handle the requested VPN connection.</string>
+    <string name="naik_no_application_to_handle_vpn">No compatible application is installed to handle the requested VPN connection.</string>
     <string name="vnc_viewer_started">VNC Viewer started</string>
     <string name="enable_gateway">Enable RDP Gateway</string>
     <string name="scroll_speed">Touch Scroll Speed</string>
