@@ -18,18 +18,14 @@
         android:name="android.hardware.microphone"
         android:required="false" />
 
-    <uses-feature
-        android:name="android.software.leanback"
-        android:required="false" />
-
     <application
         android:name="com.iiordanov.bVNC.App"
         android:allowBackup="false"
-        android:banner="@mipmap/banner_bvnc"
-        android:icon="@drawable/${custom_vnc_app_icon}"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="${custom_vnc_app_name}"
         android:theme="@style/AppThemeDayNight"
-        tools:replace="android:label,android:theme">
+        tools:replace="android:icon,android:label,android:roundIcon,android:theme">
 
         <activity
             android:name="com.undatech.opaque.ConnectionGridActivity"
@@ -43,7 +39,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
 
