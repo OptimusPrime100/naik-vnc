@@ -546,6 +546,13 @@ public class ConnectionGridActivity extends AppCompatActivity implements GetText
         MorpheuslyBottomSheet.newInstance().show(getSupportFragmentManager(), "morpheusly");
     }
 
+    /**
+     * Opens the Naik VNC Privacy Policy in the user's web browser.
+     */
+    public void openPrivacyPolicy(MenuItem menuItem) {
+        startUriIntent(this, "https://optimusprime100.github.io/naik-vnc/");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

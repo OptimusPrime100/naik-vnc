@@ -59,4 +59,13 @@
         android:title="@string/action_edit_default_settings"
         app:showAsAction="never"
         tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/actionPrivacyPolicy"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:onClick="openPrivacyPolicy"
+        android:showAsAction="never"
+        android:title="@string/action_privacy_policy"
+        app:showAsAction="never"
+        tools:ignore="AppCompatResource" />
 </menu>
