@@ -6,7 +6,6 @@
         app:actionViewClass="android.widget.ImageButton"
         android:title="@string/move_toolbar"
         app:showAsAction="always" />
-
     <item
         android:id="@+id/extraKeysToggle"
         android:icon="@drawable/showkeys"
@@ -14,7 +13,6 @@
         android:padding="0dp"
         android:title="@string/extra_keys_enable"
         app:showAsAction="always" />
-
     <item
         android:id="@+id/actionShowKeyboard"
         android:icon="@drawable/ic_keyboard_gray_48dp"
@@ -28,7 +26,6 @@
         app:actionViewClass="com.iiordanov.bVNC.input.ScrollWheelButton"
         android:title="@string/scroll_wheel"
         app:showAsAction="always" />
-
     <item
         android:id="@+id/itemExtraKeys"
         android:icon="@drawable/extra_keys"
@@ -82,6 +79,13 @@
             </group>
         </menu>
     </item>
+
+    <!-- bVNC DeX custom session setting, integrated beside Input/Scaling. -->
+    <item
+        android:id="@+id/itemDexMouseSettings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="DeX Mouse Settings" />
+
     <item
         android:id="@+id/itemDisconnect"
         android:alphabeticShortcut="x"

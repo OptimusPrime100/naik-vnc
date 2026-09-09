@@ -1,0 +1,9 @@
+mainConfiguration:
+  visibility:
+    connectionTypeLabel: 8
+  title:
+    default: "Naik VNC"
+    en: "Naik VNC"
+  subtitle:
+    default: "VNC optimized for Samsung DeX"
+    en: "VNC optimized for Samsung DeX"

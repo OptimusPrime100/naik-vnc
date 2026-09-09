@@ -5,12 +5,12 @@ import android.content.Intent
 import android.net.Uri
 import com.iiordanov.bVNC.ConnectionBean
 import com.iiordanov.bVNC.Constants
+import com.iiordanov.bVNC.DexRemoteCanvasActivity
 import com.iiordanov.bVNC.Utils
 import com.undatech.opaque.util.ConnectionLoader
 import com.undatech.opaque.util.GeneralUtils
 
 class IntentHelper {
-
     fun getIntent(
         connectionLoader: ConnectionLoader, runtimeId: String, appContext: Context, packageContext: Context
     ): Intent {
@@ -30,8 +30,13 @@ class IntentHelper {
         return intent
     }
 
-    private fun getIntentForRemoteCanvasActivity(packageContext: Context) =
-        Intent(packageContext, GeneralUtils.getClassByName(Constants.remoteCanvasActivityClassPath))
+    private fun getIntentForRemoteCanvasActivity(packageContext: Context): Intent {
+        return if (packageContext.packageName == DEX_VNC_PACKAGE) {
+            Intent(packageContext, DexRemoteCanvasActivity::class.java)
+        } else {
+            Intent(packageContext, GeneralUtils.getClassByName(Constants.remoteCanvasActivityClassPath))
+        }
+    }
 
     private fun getUriIntentForVpnClient(
         packageContext: Context, conn: ConnectionBean
@@ -66,4 +71,7 @@ class IntentHelper {
         )
     )
 
+    companion object {
+        private const val DEX_VNC_PACKAGE = "com.naiklabs.dexvnc"
+    }
 }

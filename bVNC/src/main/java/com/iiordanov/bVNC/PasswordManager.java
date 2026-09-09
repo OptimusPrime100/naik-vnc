@@ -20,7 +20,6 @@
 package com.iiordanov.bVNC;
 
 import android.util.Base64;
-import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -115,15 +114,19 @@ public class PasswordManager {
             InvalidKeySpecException, NoSuchPaddingException,
             InvalidKeyException, InvalidAlgorithmParameterException,
             IllegalBlockSizeException, BadPaddingException {
-        Log.e("ENCRYPT", "ENCRYPT FUNCTION CALLED with password: " + plaintext);
         byte[] ciphertext = null;
         byte[] salt = randomBytes(Constants.saltLength);
 
         Cipher cipher = initialize(salt, null, Cipher.ENCRYPT_MODE);
         ciphertext = cipher.doFinal(plaintext.getBytes("UTF-8"));
-        String encrypted = String.format("%s%s%s%s%s", b64Encode(salt), DELIM, b64Encode(cipher.getIV()), DELIM, b64Encode(ciphertext));
-        Log.e("ENCRYPT-ENCRYPTED", encrypted);
-        return encrypted;
+        return String.format(
+                "%s%s%s%s%s",
+                b64Encode(salt),
+                DELIM,
+                b64Encode(cipher.getIV()),
+                DELIM,
+                b64Encode(ciphertext)
+        );
     }
 
     public String decrypt(String encrypted) throws UnsupportedEncodingException, NoSuchAlgorithmException,
@@ -136,10 +139,7 @@ public class PasswordManager {
         byte[] ciphertext = b64Decode(fields[2]);
         Cipher cipher = initialize(salt, iv, Cipher.DECRYPT_MODE);
         byte[] plaintext = cipher.doFinal(ciphertext);
-        String decrypted = new String(plaintext, "UTF-8");
-        Log.e("DECRYPT-ENCRYPTED", encrypted);
-        Log.e("DECRYPT", "DECRYPT FUNCTION CALLED plaintext resulted in: " + decrypted);
-        return decrypted;
+        return new String(plaintext, "UTF-8");
     }
 
     /**
@@ -154,8 +154,6 @@ public class PasswordManager {
      editor.putString("masterPasswordSalt", salt);
      editor.putString("masterPasswordHash", hash);
      editor.apply();
-     Log.i(TAG, "Setting master password hash.");
-     //Log.i(TAG, String.format("hash: %s, salt: %s", hash, new String(PasswordManager.b64Decode(salt))));
      }
      */
 
@@ -169,7 +167,6 @@ public class PasswordManager {
      String newHash = null;
      try {
      newHash = PasswordManager.computeHash(password, savedSalt);
-     //Log.i(TAG, String.format("savedHash: %s, savedSalt: %s, newHash: %s", savedHash, new String(savedSalt), newHash));
      if (newHash.equals(savedHash)) {
      result = true;
      }
