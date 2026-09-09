@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Naik VNC Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for Naik VNC by Naik_Labs">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --fg: #171717;
+      --muted: #5f6368;
+      --card: #f6f8fa;
+      --border: #d0d7de;
+      --link: #0969da;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --fg: #e6edf3;
+        --muted: #9da7b3;
+        --card: #161b22;
+        --border: #30363d;
+        --link: #58a6ff;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    main {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+    h1 { margin-bottom: 8px; font-size: 2rem; }
+    h2 { margin-top: 2.2rem; font-size: 1.3rem; }
+    .meta {
+      padding: 16px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+    }
+    code {
+      background: var(--card);
+      padding: .15em .35em;
+      border-radius: 5px;
+    }
+    a { color: var(--link); }
+    li { margin: .35rem 0; }
+    .warning {
+      padding: 12px 16px;
+      border-left: 4px solid var(--border);
+      background: var(--card);
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Naik VNC Privacy Policy</h1>
+  <div class="meta">
+    <strong>Effective date:</strong> 9 September 2026<br>
+    <strong>App:</strong> Naik VNC<br>
+    <strong>Developer:</strong> Naik_Labs<br>
+    <strong>Package:</strong> <code>com.naiklabs.dexvnc</code>
+  </div>
+
+  <p>Naik VNC is an independent open-source VNC client derived from bVNC. This Privacy Policy explains how Naik VNC accesses, uses, stores, and transmits information when you use the app.</p>
+
+  <h2>1. Summary</h2>
+  <p>Naik_Labs does not operate a backend service that collects your Naik VNC connection profiles or remote-desktop session contents.</p>
+  <p>Naik VNC primarily stores configuration locally on your device and communicates directly with servers, computers, gateways, and infrastructure that you choose to connect to.</p>
+  <p>The current Naik VNC release does not intentionally include advertising SDKs, third-party analytics SDKs, crash-reporting SDKs, or a Naik_Labs telemetry service.</p>
+
+  <h2>2. Information stored locally on your device</h2>
+  <p>Naik VNC can store connection profiles and preferences locally so that you can reconnect without entering the same settings each time.</p>
+  <p>Depending on the features and configuration you use, locally stored information can include:</p>
+  <ul>
+    <li>server hostname or IP address;</li>
+    <li>port numbers;</li>
+    <li>usernames;</li>
+    <li>connection names and display preferences;</li>
+    <li>VNC connection settings;</li>
+    <li>SSH gateway or tunneling settings;</li>
+    <li>certificates, public keys, private-key-related configuration, or other authentication material that you provide;</li>
+    <li>passwords or other credentials when you choose an option that saves them;</li>
+    <li>mouse, scaling, input, and Samsung DeX-related preferences.</li>
+  </ul>
+  <p>These settings are used to provide the functions you request and are not uploaded to a Naik_Labs server.</p>
+  <p>Some application data may be stored in a local database that uses SQLCipher components. Naik VNC does not represent that every locally stored credential is independently encrypted in every configuration. Device security, screen locking, operating-system protections, and your own credential-handling choices remain important.</p>
+
+  <h2>3. Network connections and remote-desktop data</h2>
+  <p>Naik VNC is a network client. When you connect to a remote system, the app transmits information needed to establish and operate that connection directly to the destination you selected.</p>
+  <p>Depending on the features you use, this can include communications with:</p>
+  <ul>
+    <li>VNC servers;</li>
+    <li>SSH servers or gateways;</li>
+    <li>Proxmox or oVirt infrastructure;</li>
+    <li>other user-configured remote systems supported by the underlying project.</li>
+  </ul>
+  <p>Remote-desktop session data can include screen updates, keyboard input, mouse input, clipboard-related data where a feature is enabled, authentication information, and protocol metadata required for the connection.</p>
+  <p>Naik_Labs does not act as an intermediary for these sessions and does not receive a copy of your remote-desktop traffic through a Naik_Labs service.</p>
+  <p>The confidentiality of a remote session depends on the protocol, server, tunnel, encryption, authentication, and network configuration that you choose. You are responsible for using servers and security settings that you trust.</p>
+
+  <h2>4. Local network discovery</h2>
+  <p>Where local-network discovery functionality is used, Naik VNC may inspect or probe addresses and service ports on your local network to locate compatible systems.</p>
+  <p>Discovery information is used for app functionality and is not sent to a Naik_Labs backend.</p>
+
+  <h2>5. Permissions and device access</h2>
+  <p>The current Naik VNC release requests permissions used for core functionality, including:</p>
+  <ul>
+    <li><strong>Internet access</strong> — to connect to remote systems that you select;</li>
+    <li><strong>Network state</strong> — to determine network connectivity;</li>
+    <li><strong>Vibration</strong> — for supported user-interface feedback.</li>
+  </ul>
+  <p>The current release does not request runtime permissions for location, contacts, SMS, phone calls, camera, general file storage, or microphone access.</p>
+
+  <h2>6. Analytics, advertising, and telemetry</h2>
+  <p>The current Naik VNC release does not intentionally include advertising SDKs, third-party analytics SDKs, third-party crash-reporting SDKs, or a Naik_Labs telemetry or tracking backend.</p>
+  <p>The Google Play Store, Android operating system, device manufacturer, network provider, or services that you independently connect to may process information under their own privacy policies and terms. Those services are not operated by Naik_Labs.</p>
+
+  <h2>7. Sharing of information</h2>
+  <p>Naik_Labs does not sell your personal information.</p>
+  <p>Naik_Labs does not receive or share your saved Naik VNC connection profiles through a Naik_Labs backend because no such backend is used for those profiles.</p>
+  <p>Information is transmitted to remote systems when you direct Naik VNC to connect to them. Those transmissions are necessary to provide the remote-access functionality you requested. The operator of a server you connect to may receive and process information according to that operator's own policies and configuration.</p>
+
+  <h2>8. Data retention and deletion</h2>
+  <p>Connection profiles and preferences stored by Naik VNC remain on your device until they are changed or removed, the app's local storage is cleared, or the app is uninstalled.</p>
+  <p>You can remove saved connection information from the app where the relevant management option is available. You can also use Android's app-storage controls or uninstall Naik VNC to remove locally stored app data.</p>
+  <p>Naik_Labs does not maintain a server-side Naik VNC account database or a server-side copy of your connection profiles that requires a separate account-deletion request.</p>
+  <p>Data stored or logged by a remote server that you chose to connect to is controlled by that server's operator and is outside Naik_Labs' control.</p>
+
+  <h2>9. Security</h2>
+  <p>Naik VNC uses Android application storage and the security mechanisms provided by the underlying protocols and libraries used by the app.</p>
+  <p>No method of storing or transmitting information can be guaranteed to be completely secure. Users should protect their devices, use trusted networks and servers, avoid saving credentials when unnecessary, and use encrypted tunnels or secure protocol options where appropriate.</p>
+  <p>Naik VNC does not intentionally log plaintext or decrypted credential material through the credential encryption/decryption diagnostic logging that was present in the upstream code and removed in this fork.</p>
+
+  <h2>10. Accounts</h2>
+  <p>Naik VNC does not currently provide a Naik_Labs user-account system.</p>
+  <p>Because there is no Naik_Labs account system, there is no separate Naik_Labs cloud account or associated cloud profile to delete.</p>
+
+  <h2>11. Open-source software and third-party components</h2>
+  <p>Naik VNC is an independent modified fork of bVNC and uses open-source libraries and components.</p>
+  <p>Source code and licensing information are available at
+    <a href="https://github.com/OptimusPrime100/naik-vnc">github.com/OptimusPrime100/naik-vnc</a>.
+  </p>
+  <p>Third-party components and external services may have their own licenses, privacy practices, and security characteristics.</p>
+  <p>Naik VNC is not affiliated with or endorsed by the original bVNC developer or Samsung Electronics.</p>
+
+  <h2>12. Changes to this Privacy Policy</h2>
+  <p>This Privacy Policy may be updated when Naik VNC's features, data practices, or legal and platform requirements change.</p>
+  <p>The effective date at the top of this page will be updated when material changes are made.</p>
+
+  <h2>13. Contact</h2>
+  <p>For privacy questions about Naik VNC, use the
+    <a href="https://github.com/OptimusPrime100/naik-vnc/issues">Naik VNC GitHub Issues page</a>.
+  </p>
+  <p class="warning"><strong>Do not include passwords, private keys, authentication tokens, or other sensitive credentials in a public GitHub issue.</strong></p>
+  <p>Developer: <strong>Naik_Labs</strong></p>
+</main>
+</body>
+</html>
