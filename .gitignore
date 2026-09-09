@@ -42,7 +42,11 @@ java/org/freedesktop/gstreamer/androidmedia/
 bVNC/libs/sqlcipher-javadoc.jar
 bVNC/libs/sqlcipher.jar
 bVNC/release/
-bVNC/src/main/assets/
+
+# Ignore generated/upstream bVNC assets, but keep the Naik VNC app configuration.
+bVNC/src/main/assets/*
+!bVNC/src/main/assets/com.naiklabs.dexvnc.yaml
+
 bVNC/src2/main/assets/fontconfig/
 bVNC/src2/main/assets/ssl/
 CustomVnc-app/src/main/AndroidManifest.xml.bakautocustom
@@ -52,6 +56,7 @@ CustomVnc-app/src/main/res
 # Built application files
 *.apk
 *.ap_
+*.aab
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -71,6 +76,13 @@ build/
 
 # Signing files
 .signing/
+*.jks
+*.keystore
+*.p12
+*.pfx
+keystore.properties
+key.properties
+signing.properties
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -92,6 +104,14 @@ captures/
 *.ipr
 *~
 *.swp
+
+# External/release output directories
+CustomVnc-app/release/
+
+# IntelliJ / Android Studio local metadata.
+# Existing tracked upstream .idea files remain tracked; this prevents new
+# machine-specific .idea files from being added accidentally.
+.idea/
 
 # Android Patch
 gen-external-apklibs
@@ -207,7 +227,7 @@ fabric.properties
 GITHUB_TOKEN
 build-*
 upload_*
-trigger-*
+trigger_*
 increment_*
 functions.sh
 install.sh
@@ -220,3 +240,25 @@ check_elf_alignment*
 remote-desktop-clients-libs-*
 
 venv
+
+# ---------------------------------------------------------------------------
+# Naik VNC local/public-release hygiene
+# ---------------------------------------------------------------------------
+
+# Local audit and release-preparation notes/reports.
+audit-*.txt
+naik-vnc-release-dependencies.txt
+PLAY INTERNAL TESTING - STEP BY STEP.txt
+README - NAIK LABS PLAY EDITION.txt
+README - PLAY EDITION.txt
+README - STAGE 1.txt
+
+# Local library scratch area used during development. None of these JARs are
+# required by the current Gradle configuration.
+bVNC/libs/
+
+# Prevent accidentally adding additional local AAR binaries. The SQLCipher AAR
+# below is intentionally tracked because the current Gradle configuration
+# references it directly.
+common/aars/*.aar
+!common/aars/android-database-sqlcipher-4.5.4.aar
